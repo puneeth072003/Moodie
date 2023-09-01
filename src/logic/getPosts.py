@@ -2,9 +2,9 @@ import praw
 import json
 import sys
 import re
+import os
 
 username = sys.argv[1]
-
 
 reddit = praw.Reddit(
     client_id='K6_eU3sLgqICnPS99qQzjw',
@@ -22,8 +22,12 @@ for post in user_posts:
     sentence += " "+post.title
     sentence += " "+post.selftext
 cleaned_sentence = re.sub(
-    r'[\n\r]|(\[.*?\]\(https?://[^\)]+\))|u/[^\s]+|[\\*]|[^\x20-\x7E]', '', sentence)
+    r'[\n\r]|(\[.*?\]\(https?://[^\)]+\))|u/[^\s]+|[\\*]|#.*?|[^\x20-\x7E]', '', sentence)
 
 user_posts_data = {"sentence": cleaned_sentence}
-with open("data.json", "w") as file:
+
+directory_path = "./src/Controller"
+file_path = os.path.join(directory_path, "data.json")
+with open(file_path, "w") as file:
     json.dump(user_posts_data, file, indent=4)
+print("File created")

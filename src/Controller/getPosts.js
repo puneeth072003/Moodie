@@ -4,10 +4,8 @@ const path = require("path");
 const getPosts = (req, res) => {
   const pythonScriptPath = path.resolve(__dirname, "..\\logic\\getPosts.py");
 
-  username = "spez";
+  username = "Pandamonium773";
   const pythonProcess = spawn("python", [pythonScriptPath, username]); //value should be change here
-
-  let posts = "";
 
   pythonProcess.stdout.on("data", (data) => {
     console.error(`Python output file created`);
