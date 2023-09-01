@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header id="navbar">
+        <nav class="navbar-container container">
+          <a href="index.html" class="home-link" style="text-decoration: none;">
+            <div class="navbar-logo"></div>
+            Moodie 
+          </a>
+          <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div id="navbar-menu" aria-labelledby="navbar-toggle">
+            <ul class="navbar-links">
+              <li class="navbar-item"><a class="navbar-link"style="text-decoration: none;" href="about.html">About</a></li>
+              <li class="navbar-item"><a class="navbar-link" style="text-decoration: none;"href="/blog">Blog</a></li>
+              <li class="navbar-item"><a class="navbar-link"style="text-decoration: none;" href="/careers">Support</a></li>
+              <li class="navbar-item"><a class="navbar-link"style="text-decoration: none;" href="/contact">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <br><br><br>
+    <img src="img/logo.png" alt="" style="float: right;">
+      <br><br><br><br>
+      <p style="color: aliceblue;padding: 50px;"><span style="color:#04A2E2;font-size: 80px;">Hi</span><br>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Totam nemo magnam odio accusamus velit aspernatur<br> adipisci minus ducimus exercitationem veritatis vel, commodi illum debitis similique <br>pariatur dignissimos alias, soluta distinctio!<br>
+      <button>Button</button>    
+      </p>
+      <p style="float: left;padding-left: 55px;"><img src="img/letterlogo.png" alt="" width="400px"></p>
+      <p style="float: right;padding-right: 90px;font-size: 20px;color: aliceblue;" class="id"><br><br><br>Some Text<br>
+    Negativity<br>Postivity<br>Neutral<br>Some text<br><button id="downloadButton">Download Page as Image</button>
+  </p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+  
+
+    <script>
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            // Capture the entire body as an image using html2canvas
+            html2canvas(document.body).then(function(canvas) {
+                // Convert the canvas to a data URL
+                var dataURL = canvas.toDataURL("image/png");
+
+                // Create a temporary anchor element to trigger the download
+                var a = document.createElement('a');
+                a.href = dataURL;
+                a.download = 'webpage.png';
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+        });
+    </script>
+      <script>
+        const navbarToggle = navbar.querySelector("#navbar-toggle");
+const navbarMenu = document.querySelector("#navbar-menu");
+const navbarLinksContainer = navbarMenu.querySelector(".navbar-links");
+let isNavbarExpanded = navbarToggle.getAttribute("aria-expanded") === "true";
+
+const toggleNavbarVisibility = () => {
+  isNavbarExpanded = !isNavbarExpanded;
+  navbarToggle.setAttribute("aria-expanded", isNavbarExpanded);
+};
+
+navbarToggle.addEventListener("click", toggleNavbarVisibility);
+
+navbarLinksContainer.addEventListener("click", (e) => e.stopPropagation());
+navbarMenu.addEventListener("click", toggleNavbarVisibility);
+      </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+
+    <section class="footer">
+        <div class="footer-clean">
+            <footer>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 col-md-3 item">
+                            <h2>Services</h2>
+                            <ul>
+                                <li><a href="#">Web design</a></li>
+                                <li><a href="#">Development</a></li>
+                                <li><a href="#">Hosting</a></li>
+                            </ul><br>
+                        </div>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h2>About</h2>
+                            <ul>
+                                <li><a href="#">Company</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Legacy</a></li>
+                            </ul><br>
+                        </div>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h2>Support</h2>
+                            <ul>
+                                <li><a href="#">Job openings</a></li>
+                                <li><a href="#">Employee success</a></li>
+                                <li><a href="#">Benefits</a></li>
+                            </ul><br>
+                        </div>
+                        <div class="col-lg-3 item social"><a href="" target="_blank"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                            <p class="copyright">Dev-Den © 2023</p><br>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    </section>
+
+      
+</body>
+</html>
