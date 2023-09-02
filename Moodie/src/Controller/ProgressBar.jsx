@@ -1,44 +1,26 @@
 import React, { useEffect, useState } from "react";
-import "./ProgressBars.css"; // Import your CSS file
+import "./ProgressBars.css";
 
 const ProgressBars = () => {
-  let [positiveValue, setPositiveValue] = useState(0);
-  let [neutralValue, setNeutralValue] = useState(0);
-  let [negativeValue, setNegativeValue] = useState(0);
+  const [positive, setPositive] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [negative, setNegative] = useState(0);
 
-  // Simulate receiving data from the backend
   useEffect(() => {
-    // Replace these values with data received from your backend
-    let backendData = {
-      positive: window.Positive,
-      neutral: window.Neutral,
-      negative: window.Negative,
-    };
-
-    setPositiveValue(backendData.positive);
-    setNeutralValue(backendData.neutral);
-    setNegativeValue(backendData.negative);
-  }, [negativeValue]);
-
+    setPositive(window.Positive);
+    setNeutral(window.Neutral);
+    setNegative(window.Negative);
+  }, []);
   return (
     <div className="progress-bars">
-      <div
-        className="progress-bar positive"
-        style={{ width: `${positiveValue}%` }}
-      >
-        Positive: {positiveValue}%
+      <div className="progress-bar positive" style={{ width: `${positive}%` }}>
+        Positive : {positive}%
       </div>
-      <div
-        className="progress-bar neutral"
-        style={{ width: `${neutralValue}%` }}
-      >
-        Neutral: {neutralValue}%
+      <div className="progress-bar neutral" style={{ width: `${neutral}%` }}>
+        Neutral : {neutral}%
       </div>
-      <div
-        className="progress-bar negative"
-        style={{ width: `${negativeValue}%` }}
-      >
-        Negative: {negativeValue}%
+      <div className="progress-bar negative" style={{ width: `${negative}%` }}>
+        Negative : {negative}%
       </div>
     </div>
   );

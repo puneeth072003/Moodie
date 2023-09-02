@@ -74,7 +74,9 @@ export const Final = () => {
       <div>
         <h1 className="final-suggest">Suggestions</h1>
         <p className="final-stext">
-          I think you are a bit depressed, please talk to your close ones once
+          {window.Overall === "Negative"
+            ? "I think you are a bit depressed, please talk to your close ones once"
+            : "Doing good, Keep it up"}
         </p>
       </div>
     </div>
