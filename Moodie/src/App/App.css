@@ -1,0 +1,34 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #081c29;
+}
+
+.text-container {
+  text-align: start;
+  width: 65%;
+  padding: 20px;
+}
+
+.app-head {
+  color: #04a2e2;
+  font-size: 6rem;
+}
+
+.app-text {
+  width: 45rem;
+  word-spacing: 1px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.main-logo {
+  max-width: 100%;
+  padding-bottom: 7rem;
+  padding-right: 2rem;
+  padding-left: 0;
+  padding-top: 0;
+  height: auto;
+}

@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "spotify-circular";
+  src: url("fonts/CircularSpotifyText-Black.otf") format("opentype"),
+    url("fonts/CircularSpotifyText-BlackItalic.otf") format("opentype"),
+    url("fonts/CircularSpotifyText-Bold.otf") format("opentype"),
+    url("fonts/CircularSpotifyText-Book.otf") format("opentype"),
+    url("fonts/CircularSpotifyText-BookItalic.otf") format("opentype"),
+    url("fonts/CircularSpotifyText-Light.otf") format("opentype"),
+    url("fonts/CircularSpotifyText-Medium.otf") format("opentype"),
+    url("fonts/CircularSpotifyText-MediumItalic.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+html {
+  background-color: #191414;
+}
+body {
+  font-family: "spotify-circular";
+}
