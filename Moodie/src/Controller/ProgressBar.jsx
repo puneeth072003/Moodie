@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./ProgressBars.css"; // Import your CSS file
 
 const ProgressBars = () => {
-  const [positiveValue, setPositiveValue] = useState(0);
-  const [neutralValue, setNeutralValue] = useState(0);
-  const [negativeValue, setNegativeValue] = useState(0);
+  let [positiveValue, setPositiveValue] = useState(0);
+  let [neutralValue, setNeutralValue] = useState(0);
+  let [negativeValue, setNegativeValue] = useState(0);
 
   // Simulate receiving data from the backend
   useEffect(() => {
@@ -18,7 +18,7 @@ const ProgressBars = () => {
     setPositiveValue(backendData.positive);
     setNeutralValue(backendData.neutral);
     setNegativeValue(backendData.negative);
-  }, [positiveValue]);
+  }, [negativeValue]);
 
   return (
     <div className="progress-bars">
