@@ -1,12 +1,11 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
 import Logowhite from "../assets/logowhite.png";
 
 const Navbar = () => {
   return (
     <nav className="navbar-container container">
       <img src={Logowhite} className="nav-logo"></img>
-      <button
+      {/* <button
         type="button"
         id="navbar-toggle"
         aria-controls="navbar-menu"
@@ -20,20 +19,23 @@ const Navbar = () => {
       <div id="navbar-menu" aria-labelledby="navbar-toggle">
         <ul className="navbar-links">
           <li className="navbar-item">
-            <Link to="/about" className="navbar-link">
-              About
-            </Link>
+            <a className="navbar-link" onClick={handleIntro}>
+              Intro
+            </a>
+            {showIntro && <div dangerouslySetInnerHTML={{ __html: Intro }} />}
           </li>
           <li className="navbar-item">
-            <Link to="/tools" className="navbar-link">
+            <a className="navbar-link" href="Tools.html">
               Tools
-            </Link>
+            </a>
           </li>
-          <Link to="/senarious" className="navbar-link">
-            Senarious
-          </Link>
+          <li className="navbar-item">
+            <a className="navbar-link" href="casestudy.html">
+              Senarious
+            </a>
+          </li>
         </ul>
-      </div>
+      </div> */}
     </nav>
   );
 };

@@ -1,0 +1,490 @@
+:root {
+    --navbar-bg-color: #081C29;
+    --navbar-text-color: hsl(0, 0%, 85%);
+    --navbar-text-color-focus: #04A2E2;
+    
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: #081C29;
+  }
+  .container {
+    max-width: 1000px;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #navbar {
+    --navbar-height: 64px;
+    position: fixed;
+    height: var(--navbar-height);
+    background-color: var(--navbar-bg-color);
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+  }
+  .navbar-item {
+    margin: 0.4em;
+    width: 100%;
+  }
+  
+  .home-link,
+  .navbar-link {
+    color: var(--navbar-text-color);
+    text-decoration: none;
+    display: flex;
+    font-weight: 400;
+    align-items: center;
+    
+  }
+  
+  .home-link:is(:focus, :hover) {
+    color: var(--navbar-text-color-focus);
+  }
+  
+  .navbar-link {
+    justify-content: center;
+    width: 100%;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+  }
+  
+  .navbar-link:is(:focus, :hover) {
+    color: var(--navbar-text-color-focus);
+    background-color: var(--navbar-bg-contrast);
+  }
+  #navbar-toggle {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .icon-bar {
+    display: block;
+    width: 25px;
+    height: 4px;
+    margin: 2px;
+    background-color: var(--navbar-text-color);
+  }
+  #navbar-toggle:is(:focus, :hover) .icon-bar {
+    background-color: var(--navbar-text-color-focus);
+  }
+  #navbar-toggle[aria-expanded="true"] .icon-bar:is(:first-child, :last-child) {
+    position: absolute;
+    margin: 0;
+    width: 30px;
+  }
+  #navbar-toggle[aria-expanded="true"] .icon-bar:first-child {
+    transform: rotate(45deg);
+  }
+  #navbar-toggle[aria-expanded="true"] .icon-bar:nth-child(2) {
+    opacity: 0;
+  }
+  #navbar-toggle[aria-expanded="true"] .icon-bar:last-child {
+    transform: rotate(-45deg);
+  }
+  #navbar-menu {
+    position: fixed;
+    top: var(--navbar-height);
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    left: 0;
+    right: 0;
+  }
+  #navbar-toggle[aria-expanded="true"] + #navbar-menu {
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    visibility: visible;
+  }
+  .navbar-links {
+    list-style: none;
+    position: absolute;
+    background-color: var(--navbar-bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 0;
+    right: 0;
+    margin: 1.4rem;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  #navbar-toggle[aria-expanded="true"] + #navbar-menu .navbar-links {
+    padding: 1em;
+  }
+  @media screen and (min-width: 700px) {
+    #navbar-toggle,
+    #navbar-toggle[aria-expanded="true"] {
+      display: none;
+    }
+  
+    #navbar-menu,
+    #navbar-toggle[aria-expanded="true"] #navbar-menu {
+      visibility: visible;
+      opacity: 1;
+      position: static;
+      display: block;
+      height: 100%;
+    }
+  
+    .navbar-links,
+    #navbar-toggle[aria-expanded="true"] #navbar-menu .navbar-links {
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      position: static;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+.abhi{
+  width:25%;
+}
+
+
+  
+
+
+
+  
+
+
+
+
+  .footer-clean {
+    padding:50px 0;
+    background-color:#081C29;
+    color:white;
+  }
+  
+  .footer-clean h3 {
+    margin-top:0;
+    margin-bottom:12px;
+    font-weight:bold;
+    font-size:16px;
+  }
+  
+  .footer-clean ul {
+    padding:0;
+    list-style:none;
+    line-height:1.6;
+    font-size:14px;
+    margin-bottom:0;
+  }
+  
+  .footer-clean ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.8;
+  }
+  
+  .footer-clean ul a:hover {
+    opacity:1;
+  }
+  
+  .footer-clean .item.social {
+    text-align:right;
+  }
+  
+  @media (max-width:767px) {
+    .footer-clean .item {
+      text-align:center;
+      padding-bottom:20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer-clean .item.social {
+      text-align:center;
+    }
+  }
+  
+  .footer-clean .item.social > a {
+    font-size:24px;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    border:1px solid #04A2E2;
+    margin-left:10px;
+    margin-top:22px;
+    color:inherit;
+    opacity:0.75;
+  }
+  
+  .footer-clean .item.social > a:hover {
+    opacity:0.9;
+  }
+  
+  @media (max-width:991px) {
+    .footer-clean .item.social > a {
+      margin-top:40px;
+    }
+  }
+  
+  @media (max-width:767px) {
+    .footer-clean .item.social > a {
+      margin-top:10px;
+    }
+  }
+  
+  .footer-clean .copyright {
+    margin-top:14px;
+    margin-bottom:0;
+    font-size:13px;
+    opacity:0.6;
+  }
+
+
+
+
+  
+
+  /* about page */
+  /* Reset some default styles for better consistency */
+abt_body, h1, h2, p, img {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  font-weight: 3rem;
+}
+
+abt_body {
+  font-family: Arial, sans-serif;
+  background-color:#ffff;
+}
+
+abt_header {
+  
+  background-color: white;
+  color: #d8d8d8;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.abt_header h1 {
+  font-size: 36px;
+  color: whitesmoke;
+  align-items: center;
+}
+
+.abt_content {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #081C29;
+  color: #ffff;
+  text-align: center;
+}
+
+
+.abt_about-text {
+  margin-bottom: 30px;
+  
+}
+.abt_about-text h2{
+  font-weight: 500px
+}
+
+.abt_team {
+  display: flex;
+  justify-content: space-between;
+}
+
+.abt_team-member {
+  flex-basis: calc(50% - 20px);
+  text-align: center;
+}
+.size{
+  width: 95px;
+  height: 94px;
+  
+}
+
+.abt_team-member img {
+  max-width: 100%;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+
+
+/* tools page */
+/* Reset some default styles for better consistency */
+body, h1, h2, p, img, a {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #081C29;
+}
+
+header {
+  background-color: #081C29;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.header h1 {
+  font-size: 36px;
+}
+
+.to_tools {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color:#081C29;
+  box-shadow: 0px 0px 20px 10px rgba(21, 234, 254, 0.416);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.to_tool h2{
+  color: #04A2E2;
+}
+
+.to_tool {
+  flex-basis: calc(25% - 20px);
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: rgb(54, 53, 53);
+  border: 0px solid whitesmoke;
+  text-align: center;
+}
+.to_tool p{
+  color:  white;
+}
+
+.to_to_tool img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.to_tool h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.to_tool p {
+  font-size: 14px;
+  color: #ffff;
+  margin-bottom: 20px;
+}
+
+.to_tool a {
+  text-decoration: none;
+  color: #04A2E2;
+  font-weight: bold;
+}
+
+.to_tool a:hover {
+  text-decoration: underline;
+}
+
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #081C29;
+  color: white;
+}
+
+
+/* csae study  */
+/* Reset some default styles */
+body, h1, h2 {
+  margin: 0;
+  padding: 0;
+  color: #04A2E2;
+  
+}
+body,p{
+  color: #ffff;
+}
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #081C29;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+header h1 {
+  font-size: 3rem;
+  
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #081C29;
+  padding: 0.5rem 0;
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+footer {
+  background-color: #081C29;
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+.case_page ,h2{
+ text-align: center;
+}

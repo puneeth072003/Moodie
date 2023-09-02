@@ -6,7 +6,6 @@ const getFinal = async (req, res) => {
   await getPosts(req, res);
   console.log("Analysing the data...");
   await getResult(req, res);
-  res.send("Process completed ENJOY");
 };
 
 module.exports = getFinal;

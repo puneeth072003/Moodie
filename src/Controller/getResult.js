@@ -34,6 +34,7 @@ const getResult = (req, res) => {
       try {
         console.log("#########", pythonOutput);
         global.ResponseObj = JSON.parse(pythonOutput);
+        res.send(global.ResponseObj);
         console.log("Positive:", global.ResponseObj.Positive);
         console.log("Negative:", global.ResponseObj.Negative);
         console.log("Neutral:", global.ResponseObj.Neutral);

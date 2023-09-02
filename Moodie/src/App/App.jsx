@@ -1,6 +1,7 @@
 import "./App.css";
 import icon14 from "../assets/icon14.png";
 import ProgressBars from "../Controller/ProgressBar";
+import { Final } from "../Final/final";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         </div>
       </div>
       <div>
-        <ProgressBars />
+        <Final />
       </div>
     </>
   );

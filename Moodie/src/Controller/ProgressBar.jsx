@@ -9,16 +9,16 @@ const ProgressBars = () => {
   // Simulate receiving data from the backend
   useEffect(() => {
     // Replace these values with data received from your backend
-    const backendData = {
-      positive: 12,
-      neutral: 99,
-      negative: 89,
+    let backendData = {
+      positive: window.Positive,
+      neutral: window.Neutral,
+      negative: window.Negative,
     };
 
     setPositiveValue(backendData.positive);
     setNeutralValue(backendData.neutral);
     setNegativeValue(backendData.negative);
-  }, []);
+  }, [positiveValue]);
 
   return (
     <div className="progress-bars">

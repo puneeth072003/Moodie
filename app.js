@@ -4,8 +4,12 @@ const cors = require("cors");
 const app = express();
 const router = require("./src/Router/route");
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
-// Remove this later
 app.use("/api/v1/", router);
 
 app.listen(5000, () => {

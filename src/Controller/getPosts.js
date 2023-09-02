@@ -1,11 +1,12 @@
 const { spawn } = require("child_process");
 const path = require("path");
 
-const getPosts = (req, res) => {
+const getPosts = async (req, res) => {
   const pythonScriptPath = path.resolve(__dirname, "..\\logic\\getPosts.py");
 
-  username = "Pandamonium773";
-  const pythonProcess = spawn("python", [pythonScriptPath, username]); //value should be change here
+  let username = req.body.username;
+  console.log("username: ", username);
+  const pythonProcess = await spawn("python", [pythonScriptPath, username]); //value should be change here
 
   pythonProcess.stdout.on("data", (data) => {
     console.error(`Python output file created`);
