@@ -12,7 +12,7 @@ well-being through sentiment analysis using VADER.
 - The project aims to analyze Reddit posts, assessing negativity, positivity,
 neutrality, and estimating overall mental health of the individual.
 
-### Getting Started:
+## Getting Started
 - Clone the repository.
 - Start frontend app: 
   ```
