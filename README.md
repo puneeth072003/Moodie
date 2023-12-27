@@ -1,7 +1,7 @@
 # Moodie
 A **MERN Stack** web application for analyzing sentiment in text.
 
-![letterlogo](https://github.com/puneeth072003/Moodie/assets/119479391/59072eac-8486-489d-996c-6bddabdf7274)
+<img src="https://github.com/puneeth072003/Moodie/assets/119479391/0642746b-9154-41f8-9a7d-e752b007b645" alt="Logo" style="float:right;">
 
 This project is a sentiment analysis application built using the MERN Stack:
 - Frontend: React.js
