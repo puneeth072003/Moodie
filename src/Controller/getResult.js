@@ -1,13 +1,14 @@
 const { spawn } = require("child_process");
 const path = require("path");
 const fs = require("fs");
+const {ResultModel}=require('./schema');
+const getRandomSuggestion = require("./getSuggestion");
 
-const getResult = (req, res) => {
+const getResult = async(req, res) => {
   const pythonScriptPath = path.resolve(__dirname, "..\\logic\\logic.py");
-
   let pythonOutput = "";
   const filePath = path.join(__dirname, "data.json");
-  fs.readFile(filePath, "utf8", (err, data) => {
+  fs.readFile(filePath, "utf8",(err, data) => {
     if (err) {
       console.error("Error reading JSON file:", err);
       return;
@@ -28,19 +29,31 @@ const getResult = (req, res) => {
       console.error(`Python Error: ${data}`);
     });
 
-    pythonProcess.on("close", (code) => {
+
+    pythonProcess.on("close", async(code) => {
       console.log(`Python process exited with code ${code}`);
 
       try {
-        console.log("#########", pythonOutput);
+        console.log("#########\n", pythonOutput);
         global.ResponseObj = JSON.parse(pythonOutput);
+
+        //addding in the suggestion
+        global.ResponseObj.Suggestion= getRandomSuggestion(global.ResponseObj.Overall);
         res.send(global.ResponseObj);
-        console.log("Positive:", global.ResponseObj.Positive);
-        console.log("Negative:", global.ResponseObj.Negative);
-        console.log("Neutral:", global.ResponseObj.Neutral);
-        console.log("Overall:", global.ResponseObj.Overall);
+        console.log(global.ResponseObj);
+
+        let username=req.body.username;
+        let newData={username:username,result:global.ResponseObj}
+        const newDocument=new ResultModel(newData);
+        newDocument.save()
+        .then(doc => {
+        console.log('Data inserted successfully!!!');
+        })
+        .catch(err => {
+        console.error('Error inserting data:', err);
+        });
       } catch (parseError) {
-        console.error("Error parsing JSON:", parseError);
+        console.error("Error in getResult.js:", parseError);
       }
     });
   });

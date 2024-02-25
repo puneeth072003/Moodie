@@ -14,13 +14,13 @@ const ProgressBars = () => {
   return (
     <div className="progress-bars">
       <div className="progress-bar positive" style={{ width: `${positive}%` }}>
-        Positive : {positive}%
+        Positive : {positive}
       </div>
       <div className="progress-bar neutral" style={{ width: `${neutral}%` }}>
-        Neutral : {neutral}%
+        Neutral : {neutral}
       </div>
       <div className="progress-bar negative" style={{ width: `${negative}%` }}>
-        Negative : {negative}%
+        Negative : {negative}
       </div>
     </div>
   );

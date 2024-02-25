@@ -1,10 +1,9 @@
 const { spawn } = require("child_process");
 const path = require("path");
 
-const getPosts = async (req, res) => {
+const getPosts = async (username) => {
   const pythonScriptPath = path.resolve(__dirname, "..\\logic\\getPosts.py");
 
-  let username = req.body.username;
   console.log("username: ", username);
   const pythonProcess = await spawn("python", [pythonScriptPath, username]); //value should be change here
 

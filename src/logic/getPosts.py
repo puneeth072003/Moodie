@@ -4,8 +4,8 @@ import sys
 import re
 import os
 
-username = sys.argv[1]
-# username = "tejaswa_d"
+# username = sys.argv[1]
+username = "Pandamonium773"
 
 reddit = praw.Reddit(
     client_id='K6_eU3sLgqICnPS99qQzjw',
@@ -26,6 +26,8 @@ cleaned_sentence = re.sub(
     r'[\n\r]|(\[.*?\]\(https?://[^\)]+\))|u/[^\s]+|[\\*]|#.*?|[^\x20-\x7E]', '', sentence)
 
 user_posts_data = {"sentence": cleaned_sentence}
+
+user_database_data = {username:cleaned_sentence}
 
 directory_path = "./src/Controller"
 file_path = os.path.join(directory_path, "data.json")
