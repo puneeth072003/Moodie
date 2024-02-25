@@ -29,4 +29,12 @@ const datasetSchema = new mongoose.Schema({
 
 const DatasetModel = mongoose.model('Dataset', datasetSchema,'datasets');
 
-module.exports = {ResultModel,SuggestionModel,PostModel,DatasetModel};
+const userSchema = new mongoose.Schema({
+    username: String,
+    email: String,
+    password: String
+});
+
+const UserModel = mongoose.model('User', userSchema,'users');
+
+module.exports = {ResultModel,SuggestionModel,PostModel,DatasetModel,UserModel};
