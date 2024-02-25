@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProgressBars.css";
 
-const ProgressBars = () => {
-  const [positive, setPositive] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [negative, setNegative] = useState(0);
-
-  useEffect(() => {
-    setPositive(window.Positive);
-    setNeutral(window.Neutral);
-    setNegative(window.Negative);
-  }, []);
+const ProgressBars = ({ positive, neutral, negative }) => {
   return (
     <div className="progress-bars">
       <div className="progress-bar positive" style={{ width: `${positive}%` }}>

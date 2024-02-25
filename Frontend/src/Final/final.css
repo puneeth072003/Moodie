@@ -10,7 +10,7 @@
   color: #04a2e2;
 }
 .final-body {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #fff;
 }
 .progress-container {
@@ -21,16 +21,24 @@
 }
 .final-submit {
   background-color: #04a2e2;
+  font-size: 1rem;
   border: none;
   border-radius: 3px;
-  margin-left: 1rem;
-  padding: 0.7rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
   font-family: spotify-circular;
 }
 .final-input {
-  border: "2px solid #ccc";
-  padding: "5px";
-  border-radius: "4px";
+  margin-top: 1rem;
+  font-size: 1rem;
+  background-color: #04a2e2; /* Match button background color */
+  border: none; /* Remove default border */
+  border-radius: 3px; /* Match button border radius */ /* Match button margin */
+  padding: 0.5rem; /* Match button padding */
+  font-family: spotify-circular; /* Match button font family */
+  color: #fff; /* Text color */
+  width: auto; /* Adjust width as needed */
+  display: block; /* Display as block for full width */
 }
 .final-suggest {
   text-align: end;
@@ -41,11 +49,36 @@
 .final-stext {
   color: #fff;
   text-align: end;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   padding-right: 5rem;
 }
 .final-overall {
   color: #04a2e2;
   padding-top: 1rem;
   padding-left: 5rem;
+}
+.final-flex{
+  display:flex;
+  padding:none;
+}
+.final-logo{
+  padding-left: 6rem;
+  padding-right: 9rem;
+  padding-top:1rem;
+}
+.final-flex-suggest{
+  display:flex;
+  padding:none;
+  justify-content:  space-between;
+}
+.positive-mood {
+  color: #4caf50;
+}
+
+.neutral-mood {
+  color:#2196f3;
+}
+
+.negative-mood {
+  color: #f44336;
 }

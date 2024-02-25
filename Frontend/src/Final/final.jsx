@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./final.css";
 import ProgressBars from "../Controller/ProgressBar";
 import axios from "axios";
-import { useState } from "react";
-import fs from "fs";
 
 export const Final = () => {
   const [formData, setFormData] = useState({
     username: "",
   });
+  const [analysisData, setAnalysisData] = useState(null); // State to store analysis data
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: value, // Update the corresponding property with the new value
+      [name]: value,
     });
   };
 
@@ -25,60 +24,76 @@ export const Final = () => {
       username: formData.username,
     };
 
-    await fetch("http://localhost:5000/api/v1/final", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody), // Send the username as JSON data
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("####", data);
-        window.Positive = data.Positive;
-        window.Negative = data.Negative;
-        window.Neutral = data.Neutral;
-        window.Overall = data.Overall;
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/final",
+        requestBody
+      );
+      const data = response.data;
+      setAnalysisData(data); // Update the analysis data state
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+
+  const moodClasses = {
+    positive: 'positive-mood',
+    neutral: 'neutral-mood',
+    negative: 'negative-mood',
+  };
+  
+  const moodClassName = analysisData ? moodClasses[analysisData.Overall.toLowerCase()] : '';
+  
   return (
     <div className="final-container">
-      <div className="final-textbox">
-        <h1 className="final-head">Analysis</h1>
-        <h3 className="final-body">
-          Please input your Reddit username so that I can analyse your mental
-          health
-        </h3>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          className="final-input"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit" className="final-submit" onClick={handleSubmit}>
-          Submit
-        </button>
+      <div className="final-flex">
+        <div className="final-textbox">
+          <h1 className="final-head">Analysis</h1>
+          <h3 className="final-body">
+          Could you please provide me with your Reddit username? I am interested in conducting an analysis of your mental health based on your activity and interactions on the platform.
+          </h3>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            className="final-input"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <button
+            type="submit"
+            className="final-submit"
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        </div>
+        <div><img className="final-logo" src="../../public/icon14.png" alt="logo"></img></div>
       </div>
       <div className="progress-container">
-        <ProgressBars />
+        {analysisData && <ProgressBars
+              positive={analysisData.Positive}
+              neutral={analysisData.Neutral}
+              negative={analysisData.Negative}
+          />} {/* Pass analysis data to the ProgressBars component */}
       </div>
-      <div className="final-overall">
-        <h1>Overall Mood: {window.Overall}</h1>
-      </div>
-      <div>
-        <h1 className="final-suggest">Suggestions</h1>
-        <p className="final-stext">
-          {window.Overall === "Negative"
-            ? "I think you are a bit depressed, please talk to your close ones once"
-            : "Doing good, Keep it up"}
-        </p>
+      <div className="final-flex-suggest">
+        <div className="final-overall">
+        <h1>Overall Mood:<span className={`overall-mood ${moodClassName}`}>&nbsp;&nbsp;{analysisData ? analysisData.Overall : ""}</span></h1>       </div>
+        <div>
+          <h1 className="final-suggest">Suggestions</h1>
+          <p className="final-stext">
+            {analysisData ? (
+              <>{analysisData.Suggestion}</>
+                ) : (
+                  "No suggestions available"
+                )}
+          </p>
+        </div>
       </div>
     </div>
   );
 };
+
+export default Final;

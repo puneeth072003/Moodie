@@ -4,8 +4,8 @@ import sys
 import re
 import os
 
-# username = sys.argv[1]
-username = "Pandamonium773"
+username = sys.argv[1]
+# username = "Pandamonium773"
 
 reddit = praw.Reddit(
     client_id='K6_eU3sLgqICnPS99qQzjw',
