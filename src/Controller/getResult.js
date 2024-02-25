@@ -3,11 +3,13 @@ const path = require("path");
 const fs = require("fs");
 const {ResultModel}=require('./schema');
 const getRandomSuggestion = require("./getSuggestion");
+const { pushData } = require("./tasks");
 
 const getResult = async(req, res) => {
+  pushData();  //sending in the target data to database
   const pythonScriptPath = path.resolve(__dirname, "..\\logic\\logic.py");
   let pythonOutput = "";
-  const filePath = path.join(__dirname, "data.json");
+  const filePath = path.join(__dirname, "./target/data.json");
   fs.readFile(filePath, "utf8",(err, data) => {
     if (err) {
       console.error("Error reading JSON file:", err);
@@ -47,7 +49,7 @@ const getResult = async(req, res) => {
         const newDocument=new ResultModel(newData);
         newDocument.save()
         .then(doc => {
-        console.log('Data inserted successfully!!!');
+        console.log('ResultData inserted successfully!!!');
         })
         .catch(err => {
         console.error('Error inserting data:', err);

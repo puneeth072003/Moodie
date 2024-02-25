@@ -15,4 +15,18 @@ const suggestionSchema = new mongoose.Schema({
 
 const SuggestionModel = mongoose.model('Suggestion', suggestionSchema,'suggestions');
 
-module.exports = {ResultModel,SuggestionModel};
+const postSchema = new mongoose.Schema({
+    username: String,
+    posts: [String]
+});
+
+const PostModel = mongoose.model('Post', postSchema,'posts');
+
+const datasetSchema = new mongoose.Schema({
+    username: String,
+    sentence: String
+});
+
+const DatasetModel = mongoose.model('Dataset', datasetSchema,'datasets');
+
+module.exports = {ResultModel,SuggestionModel,PostModel,DatasetModel};

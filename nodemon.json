@@ -1,3 +1,3 @@
 {
-    "ignore": ["data.json", "*.log","*.py"]
+    "ignore": ["data.json", "*.log","*.py","posts.json","/target"]
 }
