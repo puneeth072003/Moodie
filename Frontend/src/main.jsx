@@ -1,14 +1,25 @@
 import ReactDOM from "react-dom/client";
-import { Navbar } from "./Navbar/Navbar.jsx";
 import App from "./App/App.jsx";
 import "./index.css";
 import "./Navbar/navbar.css";
-import { Support } from "./Support bar/Support.jsx";
+import "./Support bar/support.css"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from "./login/login.jsx";
+import Signup from "./login/signup.jsx";
+import ToolsPage from "./Pages/tools.jsx";
+import CaseStudy from "./Pages/caseStudy.jsx";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div>
-    <Navbar />
-    <App />
-    <Support />
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/tools" element={<ToolsPage />} />
+        <Route path="/case" element={<CaseStudy />} />
+      </Routes>
+    </Router>
   </div>
 );

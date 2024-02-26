@@ -24,7 +24,7 @@ const Contact = () => {
           </a>
         </div>
         <p className="final">
-          Moodie.v1 @2023
+          Moodie.v2 @2024
           <br />
           Developed by Team Dev-Den
         </p>

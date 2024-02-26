@@ -10,7 +10,7 @@
 }
 .nav-logo {
   height: 3rem;
-  padding-left: 2rem;
+  padding-left: 4rem;
 }
 body {
   height: 100vh;
@@ -38,7 +38,7 @@ a {
   text-decoration: none;
 }
 .navbar-container {
-  padding: 1.5rem;
+  padding: 1.8rem;
   display: flex;
   justify-content: space-between;
   height: 100%;
@@ -64,6 +64,7 @@ a {
 
 .navbar-link {
   justify-content: center;
+  font-size: 1.1rem;
   width: 100%;
   padding: 0.4em 0.8em;
   border-radius: 5px;

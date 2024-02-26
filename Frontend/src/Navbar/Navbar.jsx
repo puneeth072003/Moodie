@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="navbar-container container">
       <img src={Logowhite} className="nav-logo"></img>
-      {/* <button
+      <button
         type="button"
         id="navbar-toggle"
         aria-controls="navbar-menu"
@@ -18,24 +18,23 @@ const Navbar = () => {
       </button>
       <div id="navbar-menu" aria-labelledby="navbar-toggle">
         <ul className="navbar-links">
-          <li className="navbar-item">
-            <a className="navbar-link" onClick={handleIntro}>
-              Intro
+        <li className="navbar-item">
+            <a className="navbar-link" href="/">
+              Home
             </a>
-            {showIntro && <div dangerouslySetInnerHTML={{ __html: Intro }} />}
           </li>
           <li className="navbar-item">
-            <a className="navbar-link" href="Tools.html">
+            <a className="navbar-link" href="/tools">
               Tools
             </a>
           </li>
           <li className="navbar-item">
-            <a className="navbar-link" href="casestudy.html">
+            <a className="navbar-link" href="/case">
               Senarious
             </a>
           </li>
         </ul>
-      </div> */}
+      </div>
     </nav>
   );
 };
