@@ -1,11 +1,11 @@
 .to_tools {
-    max-width: 1000px;
+    max-width: 1250px;
     margin: 10px auto;
     padding: 20px;
     background-color:#081C29;
     box-shadow: 0px 0px 20px 10px rgba(21, 234, 254, 0.416);
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
   }
   .to_tool h2{
@@ -92,4 +92,52 @@
   color: #fff;
   text-align: center;
   padding: 20px 0;
+}
+
+/* ####################################### */
+.about{
+  background-color: #081C29;
+}
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: AUTO;
+  background-color: #081C29;
+}
+
+.about-container h1 {
+  font-size: 30px;
+  color: #04A2E2;
+  margin-bottom: 20px;
+}
+
+.about-container h2 {
+  font-size: 28px;
+  color: #04A2E2;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.about-container p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.about-container ol {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.about-container ol li {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.about-container strong {
+  font-weight: bold;
+  color: #04A2E2;
 }

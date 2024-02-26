@@ -36,7 +36,11 @@ function ToolsPage() {
                         <p>  A declarative, component-based JavaScript library for building user interfaces, focused on efficient rendering and creating reusable, maintainable code.</p>
                         <a href="https://react.dev/" target="_blank">Learn More</a>
                     </div>
-                    {/* Add more tool items as needed */}
+                    <div className="to_tool">
+                        <h2>MongoDB Atlas</h2>
+                        <p> A cloud-based database service offering a managed MongoDB experience, simplifying deployment, scaling, and administration.</p>
+                        <a href="https://www.mongodb.com/atlas/" target="_blank">Learn More</a>
+                    </div>
                 </section>
                 <footer className='to-foot'>
                     <p>&copy; 2k24 Dev-Den.</p>
