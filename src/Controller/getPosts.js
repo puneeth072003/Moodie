@@ -5,8 +5,6 @@ const getRandomSuggestion = require("./getSuggestion");
 const getPosts = async (req, res) => {
   const username = req.body.username;
   const pythonScriptPath = path.resolve(__dirname, "..\\logic\\getPosts.py");
-
-  console.log("username: ", username);
   const pythonProcess = spawn("python", [pythonScriptPath, username]);
 
   let dataToSend = "";
@@ -20,8 +18,7 @@ const getPosts = async (req, res) => {
     console.error(`Python Error: ${data}`);
   });
 
-  pythonProcess.on("close", (code) => {
-    console.log(`Python script excecuted..`);
+  pythonProcess.on("close", (code) => {;
     try {
       // Parse the received JSON string
       let jsonData = JSON.parse(dataToSend);
