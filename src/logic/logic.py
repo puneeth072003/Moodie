@@ -28,6 +28,6 @@ def sentiment_scores(value):
 
 
 if __name__ == "__main__":
-    arguments = sys.argv[1:]
-    # arguments = "I want to die"
+    # arguments = sys.argv[1:]
+    arguments = "I want to die"
     sentiment_scores(arguments)

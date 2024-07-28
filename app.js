@@ -2,11 +2,9 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const Mongo_connect = require("./mongo-config.js");
-
-Mongo_connect(app);
 
 const router = require("./src/Router/route");
+
 app.use(
   cors({
     origin: "*",

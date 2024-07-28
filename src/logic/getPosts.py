@@ -1,47 +1,73 @@
-import praw
-import json
+import os
 import sys
 import re
-import os
+import praw
+from prawcore.exceptions import NotFound
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import json
 
-username = sys.argv[1]
-# username = "Pandamonium773"
+# Step 1: Extract user posts and clean the data
 
-reddit = praw.Reddit(
-    client_id='K6_eU3sLgqICnPS99qQzjw',
-    client_secret='BIfL0bYJyRlj6QsnJpr3AVLRp3TQbQ',
-    user_agent='moodie.py'
-)
+def fetch_user_posts(username):
+    reddit = praw.Reddit(
+        client_id='K6_eU3sLgqICnPS99qQzjw',
+        client_secret='BIfL0bYJyRlj6QsnJpr3AVLRp3TQbQ',
+        user_agent='moodie.py'
+    )
 
-target_user = reddit.redditor(username)
+    try:
+        target_user = reddit.redditor(username)
+        user_posts = target_user.submissions.new(limit=10)
 
-user_posts = target_user.submissions.new(
-    limit=10)
+        sentence = ""
+        Cache = []
+        for post in user_posts:
+            sentence += " " + post.title
+            sentence += " " + post.selftext
+            Cache.append(post.selftext)
 
-Cache=[]
-sentence = ""
-for post in user_posts:
-    sentence += " "+post.title
-    sentence += " "+post.selftext
-    Cache.append(post.selftext)
-cleaned_sentence = re.sub(
-    r'[\n\r]|(\[.*?\]\(https?://[^\)]+\))|u/[^\s]+|[\\*]|#.*?|[^\x20-\x7E]', '', sentence)
+        cleaned_sentence = re.sub(
+            r'[\n\r]|(\[.*?\]\(https?://[^\)]+\))|u/[^\s]+|[\\*]|#.*?|[^\x20-\x7E]', '', sentence)
 
-user_posts_data = {"sentence": cleaned_sentence}
+        user_posts_data = {"sentence": cleaned_sentence}
+        postsJsonData = {"username": username, "posts": Cache}
 
-# for data.json
-user_database_data = {"username":username,"sentence":cleaned_sentence}
+        return user_posts_data, postsJsonData
 
-# for posts.json
-postsJsonData={"username":username,"posts":Cache}
+    except NotFound:
+        print(f"User '{username}' not found or has no submissions.")
+        return None, None
 
-directory_path = "./src/Controller"
-cleanedFile_path = os.path.join(directory_path, "./target/data.json")
-with open(cleanedFile_path, "w") as file:
-    json.dump(user_database_data, file, indent=4)
+# Step 2: Analyze sentiment
 
-postsFile_path = os.path.join(directory_path, "./target/posts.json")
-with open(postsFile_path, "w") as file:
-    json.dump(postsJsonData, file, indent=4)
+def sentiment_scores(value):
+    sid_obj = SentimentIntensityAnalyzer()
+    sentiment_dict = sid_obj.polarity_scores(value)
 
-print("File created")
+    flag = ""
+    if sentiment_dict['compound'] >= 0.05:
+        flag = "Positive"
+    elif sentiment_dict['compound'] <= -0.05:
+        flag = "Negative"
+    else:
+        flag = "Neutral"
+
+    json_object = {
+        "Positive": "{0:.2f}".format(sentiment_dict['pos'] * 100),
+        "Negative": "{0:.2f}".format(sentiment_dict['neg'] * 100),
+        "Neutral": "{0:.2f}".format(sentiment_dict['neu'] * 100),
+        "Overall": flag
+    }
+    return json_object
+
+if __name__ == "__main__":
+    # username = "KillerBoi935"
+    username = sys.argv[1]
+    user_posts_data, postsJsonData = fetch_user_posts(username)
+
+    if user_posts_data and postsJsonData:
+        cleaned_sentence = user_posts_data["sentence"]
+        sentiment_analysis = sentiment_scores(cleaned_sentence)
+        print(json.dumps(sentiment_analysis, indent=4))
+    else:
+        print("No data to analyze.")
