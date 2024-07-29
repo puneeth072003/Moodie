@@ -4,8 +4,8 @@ const getRandomSuggestion = require("./getSuggestion");
 
 const getPosts = async (req, res) => {
   const username = req.body.username;
-  const pythonScriptPath = path.resolve(__dirname, "..\\logic\\getPosts.py");
-  const pythonProcess = spawn("python", [pythonScriptPath, username]);
+  const pythonScriptPath = path.resolve(__dirname, "..", "logic", "getPosts.py");
+  const pythonProcess = spawn("python3", [pythonScriptPath, username]);
 
   let dataToSend = "";
 

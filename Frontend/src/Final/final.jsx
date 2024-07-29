@@ -25,8 +25,8 @@ export const Final = () => {
     };
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/final",
+      const response = await axios.get(
+        "http://43.205.216.219:80/api/v1/fetch",
         requestBody
       );
       const data = response.data;

@@ -1,4 +1,6 @@
+Frontend/
 node_modules/
+pyenv/
 .vscode
-target/
+README.md
 keys/
