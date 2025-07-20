@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: moodie-container
-        image: puneeth773/moodie:v1.0.0
+        image: puneeth773/moodie:v1.0.3
         ports:
         - containerPort: 5000
         env:
