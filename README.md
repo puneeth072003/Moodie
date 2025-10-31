@@ -58,6 +58,8 @@
     <li><a href="#testing">Testing</a></li>
     <li><a href="#project-structure">Project Structure</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -464,6 +466,36 @@ Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on our co
 For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 
+
+## Security
+
+We take security seriously. If you discover a security vulnerability, please email **security@moodie.dev** instead of using the public issue tracker.
+
+For detailed security information, see [SECURITY.md](SECURITY.md).
+
+### Security Highlights
+
+- ✅ Non-root Docker execution
+- ✅ Input validation on all endpoints
+- ✅ Environment-based configuration
+- ✅ Regular dependency updates
+- ✅ Kubernetes security best practices
+- ✅ HTTPS ready for production
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### MIT License Summary
+
+You are free to:
+- ✅ Use commercially
+- ✅ Modify the code
+- ✅ Distribute the software
+- ✅ Use privately
+
+With the condition that:
+- ⚠️ Include the license and copyright notice
 
 ## Code of Conduct
 
